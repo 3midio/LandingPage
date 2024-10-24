@@ -1,0 +1,455 @@
+ * {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+/* contêiner principal */
+.container {
+    max-width: 1300px; 
+    margin: 0 auto; 
+    padding: 0 4%; 
+}
+
+/* Fundo gradiente */
+body {
+    min-height: 100vh; 
+    background-image: linear-gradient(134deg, black 30%, #f96400); 
+}
+
+/* Menu de navegação */
+nav {
+    padding: 5px 4%;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    background-color: black; 
+    z-index: 1000;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); 
+}
+
+nav .logo {
+    width: 60px; 
+}
+
+
+nav ul {
+    list-style: none; 
+    display: flex; 
+    align-items: center; 
+}
+
+
+nav ul li {
+    padding: 10px; 
+}
+
+
+nav ul li a {
+    color: white; 
+    text-decoration: none; 
+    font-size: 16px; 
+    position: relative;
+}
+
+/* Hover sublinhado nos links do menu */
+nav ul li a::after {
+    content: ''; 
+    position: absolute; 
+    left: 0; 
+    bottom: -5px; 
+    width: 0;
+    height: 2px;
+    background-color: white; 
+    transition: width 0.3s; 
+}
+
+nav ul li a:hover::after {
+    width: 100%; 
+}
+
+/* Menu hamburguer em mobile */
+.menu-icon {
+    display: none; 
+    cursor: pointer; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    width: 30px;
+    height: 30px;
+}
+
+
+.menu-icon span {
+    display: block; 
+    height: 4px; 
+    width: 100%; 
+    background-color: white; 
+    border-radius: 2px; 
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+    margin: 3px 0; 
+}
+
+/* EQuando o menu tiver ativo, eles vão fazer o hambúrguer virar um X, quando abrir a cascata */
+.menu-icon.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(10px);
+}
+
+.menu-icon.active span:nth-child(2) {
+    opacity: 0; 
+}
+
+.menu-icon.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-10px); 
+}
+
+@media (max-width: 768px) {
+
+    nav ul {
+        position: absolute; 
+        top: 60px; 
+        left: 0;
+        width: 100%; 
+        height: 0; 
+        overflow: hidden; 
+        flex-direction: column; 
+        background-color: black;
+        transition: height 0.3s ease; 
+    }
+
+    /* Menu aberto */
+    nav ul.open {
+        height: auto;
+    }
+
+    .menu-icon {
+        display: flex; 
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    nav ul.open {
+        display: flex; 
+        flex-direction: column; 
+        width: 100%; 
+    }
+}
+
+/* Design da main */
+main {
+    display: flex; 
+    align-items: center;
+    margin-top: 60px; 
+    min-height: 90vh; 
+}
+
+/* Códigos para o texto no início da página */
+main .main_text {
+    width: 100%; 
+    background-color: transparent; 
+}
+
+.highlight {
+    color: #f96400; 
+}
+
+main .main_text h1 {
+    font-size: 4.5rem; 
+    color: white; 
+}
+
+main .main_text p {
+    color: #eaeaea; 
+    font-size: 1.2rem; 
+    margin: 20px 0 40px; 
+    width: 90%; 
+}
+
+/* Foto do Marcus Marques */
+main .main_img img {
+    max-width: 100%; 
+    height: auto; 
+}
+
+/* Esse código ajuda a aumentar o tamanho da imagem principal, em telas de desktop*/
+@media (min-width: 1024px) {
+    .main_img img {
+        max-width: 80%; 
+        height: auto; 
+    }
+}
+
+/* Section "Sobre-evento */
+.sobre-evento {
+    padding: 60px 20px; 
+    background: linear-gradient(135deg, #f96400 0%, #ffb74d 100%); 
+    color: white;
+    text-align: center;
+    border-radius: 10px; 
+    margin: 20px 0; 
+}
+
+/* Título do campo "Sobre o evento */
+.sobre-evento h2 {
+    font-size: 3.5rem; 
+    margin-bottom: 30px;
+}
+
+/* Texto "Sobre o evento" */
+.sobre-evento p {
+    max-width: 800px; 
+    margin: 0 auto 40px; 
+    line-height: 1.6; 
+    font-size: 1.2rem; 
+}
+
+/* Design da grid de tópicos */
+.event-topics {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 20px; 
+    margin: 40px 0; 
+}
+
+/* Cards com temas do evento */
+.topic-card {
+    background-color: rgba(0, 0, 0, 0.8); 
+    border-radius: 10px; 
+    padding: 20px; 
+    transition: transform 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); 
+}
+
+/* Hover de movimento dos cards */
+.topic-card:hover {
+    transform: translateY(-5px); 
+}
+
+/* ícones dos cards */
+.topic-card i {
+    font-size: 3rem; 
+    color: #f96400; 
+    margin-bottom: 15px; 
+}
+
+/* Título dos cards */
+.topic-card strong {
+    display: block; 
+    font-size: 1.5rem; 
+    margin-bottom: 10px; 
+}
+
+/* Título dos benefícios */
+.sobre-evento h3 {
+    font-size: 2rem; 
+    margin: 30px 0 20px; 
+}
+
+/* Os códigos embaixo são para definir o visual dos benefícios dos eventos */
+.sobre-evento ul {
+    list-style-type: none;
+    padding: 0; 
+    font-size: 1.2rem; 
+    text-align: left; 
+    margin: 0 auto; 
+    max-width: 600px; 
+}
+
+/*  */
+.sobre-evento li {
+    margin-bottom: 10px; 
+}
+
+/* Container dos botões */
+.button-container {
+    margin-top: 40px; 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+}
+
+/* Botões de rede sociais, fonte, texto, tamanho, etc */
+.btn {
+    padding: 15px 25px; 
+    border-radius: 5px; 
+    text-decoration: none; 
+    color: white; 
+    font-size: 1.2rem; 
+    display: flex; 
+    align-items: center; 
+    transition: transform 0.3s, background-color 0.3s; 
+}
+
+/* Abaixo são as cores de fundo dos botões do Instagram e Facebook */
+.youtube-btn {
+    background-color: rgba(33, 191, 7, 1); 
+}
+
+.instagram-btn {
+    background-color: rgba(33, 191, 7, 1); 
+}
+
+/* Estilos para ícones dentro dos botões */
+.btn i {
+    margin-right: 10px; 
+    font-size: 1.5rem; 
+}
+
+/* Efeito de hover para os botões */
+.btn:hover {
+    transform: scale(1.1); 
+}
+
+/* Rodapé */
+footer {
+    width: 100vw; 
+    margin-left: calc(-50vw + 50%); 
+    background-color: #3e3e3e; 
+    padding: 40px 0;
+    text-align: center; 
+}
+
+/* Classe formulário */
+.formulario-inscricao {
+    padding: 40px 20px; 
+    text-align: center; 
+    background-color: #1a1a1a; 
+    border: 2px solid #f96400; 
+    border-radius: 10px; 
+    width: 100%; 
+    max-width: 500px; 
+    margin: 0 auto;
+}
+
+/* Título do formulário */
+.formulario-inscricao h2 {
+    color: white; 
+    margin-bottom: 20px; 
+    font-size: 2.5rem; 
+}
+
+/* form */
+.formulario-inscricao form {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%; 
+}
+
+/* Label do formulário */
+.formulario-inscricao label {
+    color: white;
+    width: 100%; 
+    margin-bottom: 5px; 
+    text-align: left; 
+}
+
+/* Caixa de texto do formulário */
+.formulario-inscricao input {
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    box-sizing: border-box; 
+}
+
+/* Botão do formulário */
+.formulario-inscricao button {
+    padding: 10px 20px; 
+    background-color: rgba(33, 191, 7, 1); 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    width: 100%; 
+    transition: transform 0.3s; 
+    font-family: Montserrat; 
+    font-weight: 800; 
+}
+
+/* Hover do botão do formulário */
+.formulario-inscricao button:hover {
+    transform: scale(1.05);
+}
+
+/* Mensagem de sucesso */
+#mensagem-sucesso {
+    margin-top: 20px; 
+    font-size: 1.2rem;
+    color: green;
+}
+
+/* Mensagem de erro */
+#mensagem-erro {
+    margin-top: 20px; 
+    font-size: 1.2rem; 
+    color: red; 
+}
+
+/* CSS para responsividade */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column; 
+        text-align: center; 
+    }
+
+    /* Título */
+    .main_text h1 {
+        font-size: 3rem; 
+    }
+
+    /* Paragráfo */
+    .main_text p {
+        font-size: 1rem; 
+        width: 100%; 
+    }
+
+    /* Foto Marcus Marques */
+    .main_img img {
+        max-width: 100%; 
+        height: auto; /
+
+    /* Rodapé */
+    footer {
+        padding: 20px; 
+    }
+
+    /* Formulário */
+    .formulario-inscricao {
+        max-width: 90%; 
+        padding: 20px; 
+    }
+
+    /* Título do formulário */
+    .formulario-inscricao h2 {
+        font-size: 2rem; 
+    }
+
+    /* Caixas de texto e botão do formulário */
+    .formulario-inscricao input,
+    .formulario-inscricao button {
+        font-size: 1rem; 
+    }
+
+    /* Botões de redes sociais */
+    .button-container {
+        flex-direction: column; 
+        gap: 10px; 
+    }
+
+    /* Botões */
+    .btn {
+        width: 100%; 
+        padding: 15px; 
+        font-size: 1.2rem; 
+    }
+}
+}
